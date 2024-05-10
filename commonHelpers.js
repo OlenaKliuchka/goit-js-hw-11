@@ -1,12 +1,13 @@
-import"./assets/vendor-86291ea8.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))c(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const a of t.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&c(a)}).observe(document,{childList:!0,subtree:!0});function o(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function c(e){if(e.ep)return;e.ep=!0;const t=o(e);fetch(e.href,t)}})();const n="https://pixabay.com/api/",i={key:"43802528-015b222178f5679b6792a0cf2",q:"yellow+flower",image_type:"photo",orientation:"horizontal",safesearch:!0},d=s=>{const r=new URLSearchParams({key:i.key,q:i.q,orientation:i.orientation,image_type:i.image_type,safesearch:i.safesearch});return fetch(`${n}?${r}`).then(o=>{if(!o.ok)throw new Error(iziToast.show({title:"Error",message:"Sorry, there are no images matching your search query. Please try again!"}));return o.json()})},m=s=>s.map(({webformatURL:r,largeImageURL:o,tags:c,likes:e,views:t,downloads:a,comments:l})=>`
+import{i as n,S as h}from"./assets/vendor-0fc460d7.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const a of t.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&i(a)}).observe(document,{childList:!0,subtree:!0});function r(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function i(e){if(e.ep)return;e.ep=!0;const t=r(e);fetch(e.href,t)}})();const u="https://pixabay.com/api/",c={key:"43802528-015b222178f5679b6792a0cf2",q:"house",image_type:"photo",orientation:"horizontal",safesearch:!0},y=(o="yellow")=>{const s=new URLSearchParams({key:c.key,q:o,orientation:c.orientation,image_type:c.image_type,safesearch:c.safesearch});return fetch(`${u}?${s}`).then(r=>{if(!r.ok)throw new Error(iziToast.show({title:"Error",message:"Sorry, there are no images matching your search query. Please try again!"}));return r.json()})},f=o=>o.map(({webformatURL:s,largeImageURL:r,tags:i,likes:e,views:t,downloads:a,comments:m})=>`
   
-  <li class="gallery-item">
-            <a class="gallery-link" href="${o}">
-              <img
-                class="gallery-image"
-                src="${r}"
-                alt="${c}"></a>
-            
+  <div class="gallery-item">
+               <a class="gallery-link" href="${r}">
+          <img
+            class="gallery-image"
+            src="${s}"
+            alt="${i}"
+          />
+        </a>
             <div class = "card-img">
             <div class = "likes">
             <h2 class = "card-title">Likes</h2>
@@ -18,13 +19,11 @@ import"./assets/vendor-86291ea8.js";(function(){const r=document.createElement("
 
             <div class = "comments">
             <h2 class = "card-title">Comments</h2>
-            <p class = image-text>${l}</p></div>
+            <p class = image-text>${m}</p></div>
             
             <div class = "downloads">
             <h2 class = "card-title">Downloads</h2>
             <p class = image-text>${a}</p></div>
             </div>
-            
-            
-          </ >`).join("");document.querySelector(".js-search-form");const u=document.querySelector(".gallery");d().then(s=>{const r=m(s.hits);u.innerHTML=r}).catch(s=>{console.log(s)});
+          </div>`).join(""),l=document.querySelector(".js-gallery"),g=document.querySelector(".js-search-form"),d=document.querySelector(".js-loader");function p(o){o.preventDefault();const s=o.target.elements.searchKeyword.value.trim();if(s===""){l.innerHTML="",o.target.reset(),n.show({message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight",timeout:2e3,color:"red"});return}l.innerHTML="",d.classList.remove("is-hidden"),y(s).then(r=>{r.total===0&&n.show({message:"Sorry, there are no images for this query",position:"topRight",timeout:2e3,color:"red"}),l.innerHTML=f(r.hits),new h(".gallery-list a",{captionsData:"alt",captionDelay:250})}).catch(r=>console.log(r)).finally(()=>{o.target.reset(),d.classList.add("is-hidden")})}g.addEventListener("submit",p);
 //# sourceMappingURL=commonHelpers.js.map
