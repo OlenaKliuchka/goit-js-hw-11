@@ -11,13 +11,14 @@ export const createImageGalleryItem = images => {
         comments,
       }) => `
   
-  <li class="gallery-item">
-            <a class="gallery-link" href="${largeImageURL}">
-              <img
-                class="gallery-image"
-                src="${webformatURL}"
-                alt="${tags}"></a>
-            
+  <div class="gallery-item">
+               <a class="gallery-link" href="${largeImageURL}">
+          <img
+            class="gallery-image"
+            src="${webformatURL}"
+            alt="${tags}"
+          />
+        </a>
             <div class = "card-img">
             <div class = "likes">
             <h2 class = "card-title">Likes</h2>
@@ -35,9 +36,7 @@ export const createImageGalleryItem = images => {
             <h2 class = "card-title">Downloads</h2>
             <p class = image-text>${downloads}</p></div>
             </div>
-            
-            
-          </ >`
+          </div>`
     )
     .join('');
 };
